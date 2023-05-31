@@ -1,37 +1,37 @@
 import {useState} from 'react'
 
-function Search(handleFetchData) {
+function Search() {
 
     const [searchVideo, setSearchVideo] = useState("");
-
-function handleSearchChange(e) {
-  setSearchVideo(e.target.value.toLowerCase());
-  handleFetchData(e.target.value);
-}
-
-  
+    
+    const handleSearch = (e) => {
+        e.preventDefault();
+    }
 
   return (
-      <form id="search" onSubmit={(e) => e.preventDefault()}>
+    <>
+      <form id="search" onSubmit={handleSearch}>
         <div className="container py-5 py-xxl-4">
-              <input
-                id="searchBar"
-                className="form-control"
-                name="searchBar"
-                type="text"
-                value={searchVideo}
-                onChange={handleSearchChange}
-                placeholder="Search..."
-              />
-              <button
-                type="button"
-                className="btn btn-danger"
-                // onClick={}
-              >
-                Search
-              </button>
+          <input
+            id="searchBar"
+            className="form-control"
+            name="searchBar"
+            type="text"
+            value={searchVideo}
+            onChange={(e) => setSearchVideo(e.target.value)}
+            placeholder="Search..."
+          />
+          <button
+            type="button"
+            className="btn btn-danger"
+            // onClick={}
+          >
+            Search
+          </button>
         </div>
+        {/* <p>{ searchVideo }</p> */}
       </form>
+    </>
   );
 }
 
