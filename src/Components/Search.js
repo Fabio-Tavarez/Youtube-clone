@@ -9,11 +9,11 @@ function Search() {
   const REACT_APP_API_URL =
     "https://youtube.googleapis.com/youtube/v3/search?key=";
 
-  const key = process.env.REACT_APP_API_KEY;
-  useEffect(() => {
-    fetchData();
-  }, [searchVideo]);
-  console.log([searchVideo]);
+  const key = process.env.REACT_APP_API_KEY_2;
+  // useEffect(() => {
+  //   fetchData();
+  // }, [searchVideo]);
+
   async function fetchData() {
     try {
       let result = await axios.get(
@@ -22,11 +22,16 @@ function Search() {
           `&q=${searchVideo}&maxResults=10&type=video&part=snippet`
       );
       setVideo(result.data.items);
-      console.log(video);
     } catch (e) {
-      console.log(e);
+      alert(e);
     }
   }
+
+function handleSubmit(e){
+  e.preventDefault();
+  fetchData()
+  setSearchVideo("");
+}
 
   function handleSearchChange(e) {
     setSearchVideo(e.target.value.toLowerCase());
@@ -34,8 +39,8 @@ function Search() {
 
   return (
     <>
-      <form id="search" onSubmit={(e) => e.preventDefault()}>
-        <div className="container py-5 py-xxl-4">
+      <form id="search" onSubmit={handleSubmit}>
+        <div className="container py-5 py-xxl-5">
           <input
             id="searchBar"
             className="form-control"
@@ -45,7 +50,7 @@ function Search() {
             onChange={handleSearchChange}
             placeholder="Search..."
           />
-          <button type="button" className="btn btn-danger">
+          <button type="submit" className="btn btn-danger">
             Search
           </button>
         </div>
