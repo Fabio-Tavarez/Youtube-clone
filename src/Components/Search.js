@@ -1,4 +1,4 @@
-import { useState, } from "react";
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -27,11 +27,11 @@ function Search() {
     }
   }
 
-function handleSubmit(e){
-  e.preventDefault();
-  fetchData()
-  setSearchVideo("");
-}
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetchData();
+    setSearchVideo("");
+  }
 
   function handleSearchChange(e) {
     setSearchVideo(e.target.value.toLowerCase());
@@ -56,17 +56,21 @@ function handleSubmit(e){
         </div>
         {/* <p>{ searchVideo }</p> */}
       </form>
-      <div>
-        {video.map((item) => {
-          return (
-            <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
-              <div>
-                <img src={item.snippet.thumbnails.medium.url} />
-                <h2>{item.snippet.title}</h2>
+      <div className="container">
+        <div className="row row-cols-2">
+          {video.map((item) => {
+            return (
+              <div className="col">
+                <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
+                  <div>
+                    <img src={item.snippet.thumbnails.medium.url} />
+                    <h2>{item.snippet.title}</h2>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );
@@ -76,3 +80,8 @@ export default Search;
 // item.id.videoId = key
 // item.snippet.title = Video Name
 // item.snippet.thumbnails.default.url = thumbmail
+{
+  /* <div className="container">
+        <div className="row">
+          <div className="col"></div> */
+}
