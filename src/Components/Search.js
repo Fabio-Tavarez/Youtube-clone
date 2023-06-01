@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -9,7 +9,7 @@ function Search() {
   const REACT_APP_API_URL =
     "https://youtube.googleapis.com/youtube/v3/search?key=";
 
-  const key = process.env.REACT_APP_API_KEY_2;
+  const key = process.env.REACT_APP_API_KEY_3;
   // useEffect(() => {
   //   fetchData();
   // }, [searchVideo]);
