@@ -63,7 +63,10 @@ function Search() {
               <div className="col">
                 <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
                   <div>
-                    <img src={item.snippet.thumbnails.medium.url} />
+                    <img
+                      src={item.snippet.thumbnails.medium.url}
+                      alt="thumbnail"
+                    />
                     <h2>{item.snippet.title}</h2>
                   </div>
                 </Link>
@@ -77,11 +80,5 @@ function Search() {
 }
 
 export default Search;
-// item.id.videoId = key
-// item.snippet.title = Video Name
-// item.snippet.thumbnails.default.url = thumbmail
-{
-  /* <div className="container">
-        <div className="row">
-          <div className="col"></div> */
-}
+
+
