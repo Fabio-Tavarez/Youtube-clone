@@ -55,20 +55,27 @@ function Search() {
           </button>
         </div>
       </form>
-      <div>
-        {video.map((item) => {
-          return (
-            <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
-              <div>
-                <img src={item.snippet.thumbnails.medium.url} />
-                <h2>{item.snippet.title}</h2>
+      <div className="container">
+        <div className="row row-cols-2">
+          {video.map((item) => {
+            return (
+              <div className="col">
+                <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
+                  <div>
+                    <img src={item.snippet.thumbnails.medium.url} />
+                    <h2>{item.snippet.title}</h2>
+                  </div>
+                </Link>
               </div>
-            </Link>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </>
   );
 }
 
 export default Search;
+// item.id.videoId = key
+// item.snippet.title = Video Name
+// item.snippet.thumbnails.default.url = thumbmail
