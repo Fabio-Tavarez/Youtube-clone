@@ -1,15 +1,23 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Modal from "react-modal";
+
 
 function Search() {
+Modal.setAppElement("#root");
+
+
+
   const [searchVideo, setSearchVideo] = useState("");
   const [video, setVideo] = useState([]);
+  const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState("");
 
   const REACT_APP_API_URL =
     "https://youtube.googleapis.com/youtube/v3/search?key=";
 
-  const key = process.env.REACT_APP_API_KEY_3;
+  const key = process.env.REACT_APP_API_KEY;
   // useEffect(() => {
   //   fetchData();
   // }, [searchVideo]);
@@ -23,7 +31,9 @@ function Search() {
       );
       setVideo(result.data.items);
     } catch (e) {
-      alert(e);
+      setIsOpen(true);
+      setError(e.message);
+      console.log(e.message);
     }
   }
 
@@ -39,6 +49,18 @@ function Search() {
 
   return (
     <>
+      <Modal
+        isOpen={isOpen}
+        
+        onRequestClose={() => {
+          setIsOpen(false);
+        }}
+      >
+        <div>
+          <h2>Warning</h2>
+          <p>{error}</p>
+        </div>
+      </Modal>
       <form id="search" onSubmit={handleSubmit}>
         <div className="container py-5 py-xxl-5">
           <input
@@ -54,7 +76,6 @@ function Search() {
             Search
           </button>
         </div>
-        {/* <p>{ searchVideo }</p> */}
       </form>
       <div className="container">
         <div className="row row-cols-2">
@@ -80,5 +101,3 @@ function Search() {
 }
 
 export default Search;
-
-
