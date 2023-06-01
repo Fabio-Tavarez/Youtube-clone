@@ -84,10 +84,7 @@ Modal.setAppElement("#root");
               <div className="col">
                 <Link to={`/videos/${item.id.videoId}`} key={item.id.videoId}>
                   <div>
-                    <img
-                      src={item.snippet.thumbnails.medium.url}
-                      alt="thumbnail"
-                    />
+                    <img src={item.snippet.thumbnails.medium.url} />
                     <h2>{item.snippet.title}</h2>
                   </div>
                 </Link>

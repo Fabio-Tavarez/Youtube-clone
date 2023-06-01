@@ -7,8 +7,6 @@ import AboutUs from "./Components/About";
 import Search from "./Components/Search";
 import View from "./Components/View";
 
-
-
 function App() {
   return (
     <div className="App">
@@ -17,7 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Search />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/videos/:id" element={<View/>}/>
+          <Route path="/videos/:id" element={<View />} />
         </Routes>
       </Router>
     </div>

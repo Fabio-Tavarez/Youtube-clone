@@ -32,6 +32,7 @@ export default function AboutUs() {
           a modal window
         </li>
       </ul>
+
       <h3>Developers</h3>
       <ul>
         <li>
