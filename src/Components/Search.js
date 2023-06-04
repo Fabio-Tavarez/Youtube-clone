@@ -17,7 +17,7 @@ Modal.setAppElement("#root");
   const REACT_APP_API_URL =
     "https://youtube.googleapis.com/youtube/v3/search?key=";
 
-  const key = process.env.REACT_APP_API_KEY;
+  const key = process.env.REACT_APP_API_KEY_3;
   // useEffect(() => {
   //   fetchData();
   // }, [searchVideo]);
